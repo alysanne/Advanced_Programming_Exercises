@@ -19,7 +19,7 @@ public:
         magicCount = 0;
     }
     void AddMagic(Magic *magic) {
-        if (magicCount < sizeof(magicInventory)) {
+        if (magicCount < sizeof(magicInventory)) { // Save maxMagic instead
             magicInventory[magicCount] = magic;
             magicCount++;
         }
