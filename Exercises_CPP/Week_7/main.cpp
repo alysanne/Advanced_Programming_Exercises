@@ -125,7 +125,7 @@ int main() {
     // Draw pointer
     void (GameObject<float>::*drawFloatPtr)();
     drawFloatPtr = &GameObject<float>::Draw;
-    (gameObjectInt.*drawIntPtr)();
+    (gameObjectFloat.*drawFloatPtr)();
 
     // Move pointer
     float *(GameObject<float>::*moveFloatPtr)(float, float, float);
