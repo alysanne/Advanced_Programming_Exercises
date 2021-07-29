@@ -18,3 +18,6 @@ add_executable(Exercises_w5 Week_5/main.cpp Week_5/Boat.cpp Week_5/Boat.h Week_5
 add_executable(Exercises_w6 Week_6_Revision/main.cpp Week_6_Revision/Magic.cpp Week_6_Revision/Magic.h Week_6_Revision/Spell.cpp Week_6_Revision/Spell.h Week_6_Revision/Transformation.cpp Week_6_Revision/Transformation.h Week_6_Revision/Potion.cpp Week_6_Revision/Potion.h Week_6_Revision/Wizard.cpp Week_6_Revision/Wizard.h Week_6_Revision/Elementalist.cpp Week_6_Revision/Elementalist.h Week_6_Revision/Spellswords.cpp Week_6_Revision/Spellswords.h)
 add_executable(Exercises_w7 Week_7/main.cpp Week_7/GameObject.cpp Week_7/GameObject.h)
 add_executable(Exercises_w8 Week_8/main.cpp Week_8/Weapon.cpp Week_8/Weapon.h Week_8/NoAmmoException.cpp Week_8/NoAmmoException.h Week_8/MagazineFullException.cpp Week_8/MagazineFullException.h Week_8/JammedException.cpp Week_8/JammedException.h)
+add_executable(Exercises_w9_p1 Week_9/Part_1/main.cpp)
+add_executable(Exercises_w9_p2 Week_9/Part_2/main.cpp)
+add_executable(Exercises_w9_p3 Week_9/Part_3/main.cpp Week_9/Part_3/Ocean.cpp Week_9/Part_3/Ocean.h)
