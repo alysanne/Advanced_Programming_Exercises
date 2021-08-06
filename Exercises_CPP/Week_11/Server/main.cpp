@@ -9,6 +9,15 @@
 
 int main(int argc, char* argv[]) {
 
+  // Client info
+  char hostClient[NI_MAXHOST];
+  char portClient[NI_MAXSERV];
+  memset(hostClient, 0, NI_MAXHOST);
+  memset(portClient, 0, NI_MAXSERV);
+  sockaddr_in from;
+  socklen_t clientSocketLength, clientSocketTypeLength;
+  int socketOptions, socket_type;
+
   // Server socket creation
   int port = 5000;
   struct sockaddr_in socketAddress = {
@@ -48,12 +57,22 @@ int main(int argc, char* argv[]) {
   }
 
   // Server accept
-  int acceptSocket = accept(serverSocket, NULL, NULL); // Will await until it receives a connection or fails
+  clientSocketTypeLength = sizeof(socket_type);
+  socketOptions = getsockopt(serverSocket, SOL_SOCKET, SO_TYPE, (char *)&socket_type, &clientSocketTypeLength);
+  clientSocketLength = sizeof(from);
+  int acceptSocket = accept(serverSocket, (sockaddr *)&from, &clientSocketLength); // Will await until it receives a connection or fails
   if (acceptSocket == -1) {
     std::cout << "Socket accept failed" << std::endl;
   }
 
-  std::cout << "Accepted connection" << std::endl;
+  socketOptions = getnameinfo((sockaddr *)&from, clientSocketLength, hostClient, NI_MAXHOST, portClient, NI_MAXSERV, 0);
+  if (socketOptions != 0) {
+    std::cout << "getnameinfo failed: " << socketOptions << std::endl;
+    close(serverSocket);
+    return 0;
+  }
+
+  std::cout << "Accepted connection from host " << hostClient << " and port " << portClient << std::endl;
 
   return 0;
 }
