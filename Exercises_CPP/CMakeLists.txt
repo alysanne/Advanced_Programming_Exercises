@@ -21,3 +21,5 @@ add_executable(Exercises_w8 Week_8/main.cpp Week_8/Weapon.cpp Week_8/Weapon.h We
 add_executable(Exercises_w9_p1 Week_9/Part_1/main.cpp)
 add_executable(Exercises_w9_p2 Week_9/Part_2/main.cpp)
 add_executable(Exercises_w9_p3 Week_9/Part_3/main.cpp Week_9/Part_3/Ocean.cpp Week_9/Part_3/Ocean.h)
+add_executable(Exercises_w11_server Week_11/Server/main.cpp)
+add_executable(Exercises_w11_client Week_11/Client/main.cpp)
