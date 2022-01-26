@@ -58,10 +58,10 @@ int main(int argc, char* argv[]) {
 
   // Server accept
   clientSocketTypeLength = sizeof(socket_type);
-  socketOptions = getsockopt(serverSocket, SOL_SOCKET, SO_TYPE, (char *)&socket_type, &clientSocketTypeLength);
+//  socketOptions = getsockopt(serverSocket, SOL_SOCKET, SO_TYPE, (char *)&socket_type, &clientSocketTypeLength);
   clientSocketLength = sizeof(from);
-  int acceptSocket = accept(serverSocket, (sockaddr *)&from, &clientSocketLength); // Will await until it receives a connection or fails
-  if (acceptSocket == -1) {
+  int clientSocket = accept(serverSocket, (sockaddr *)&from, &clientSocketLength); // Will await until it receives a connection or fails
+  if (clientSocket == -1) {
     std::cout << "Socket accept failed" << std::endl;
   }
 
@@ -73,6 +73,19 @@ int main(int argc, char* argv[]) {
   }
 
   std::cout << "Accepted connection from host " << hostClient << " and port " << portClient << std::endl;
+
+//  while(1) {
+  char buff[4096];
+  if (recv(clientSocket, buff, sizeof(buff), 0) == -1) {
+    std::cout << errno << std::endl;
+  }
+  std::cout << buff << std::endl;
+
+  if (send(clientSocket, "hey", sizeof("hey"), 0) == -1) {
+    std::cout << errno << std::endl;
+  }
+
+//  }
 
   return 0;
 }

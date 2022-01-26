@@ -34,6 +34,14 @@ int main(int argc, char* argv[]) {
     std::cout << "Client can start sending and receiving data..." << std::endl;
   }
 
+  send(clientSocket, "hello", sizeof("hello"), 0);
+
+  char buff[4096];
+  if (recv(clientSocket, buff, sizeof(buff), 0) == -1) {
+    std::cout << errno << std::endl;
+  }
+  std::cout << buff << std::endl;
+
   close(clientSocket);
 
   return 0;
